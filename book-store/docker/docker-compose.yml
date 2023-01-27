@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mysqldb:
+    image: mysql:5.6
+    ports:
+      - "3306:3306"
+    environment:
+      - discovery.type=single-node
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=mypass
+    volumes:
+      - .data/mysql:/var/lib/mysql
+      - .data/mysql_initdb:/docker-entrypoint-initdb.d
+      - .data/mysql_conf:/etc/mysql/conf.d
+    
